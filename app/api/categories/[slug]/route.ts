@@ -62,8 +62,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ slug
           time: 1,
           reads: 1,
           source: 1,
-          createdAt: { $dateToString: { format: '%Y-%m-%dT%H:%M:%S.%LZ', date: '$createdAt' } },
-          updatedAt: { $dateToString: { format: '%Y-%m-%dT%H:%M:%S.%LZ', date: '$updatedAt' } },
+          createdAt: { $dateToString: { format: '%Y-%m-%dT%H:%M:%S.%LZ', date: { $toDate: '$createdAt' } } },
+          updatedAt: { $dateToString: { format: '%Y-%m-%dT%H:%M:%S.%LZ', date: { $toDate: '$updatedAt' } } },
           author: {
             _id: { $toString: '$author._id' },
             name: '$author.name',

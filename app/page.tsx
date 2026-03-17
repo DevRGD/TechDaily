@@ -9,6 +9,8 @@ import { formatRelativeTime } from '@/lib/date-utils';
 import { Metadata } from 'next';
 import { Article as ArticleType } from '@/types';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'TechDaily | Reporting for the Digital Age',
   description:

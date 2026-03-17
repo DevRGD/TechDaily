@@ -5,6 +5,8 @@ import dbConnect from '@/lib/db';
 import Category from '@/models/Category';
 import { Article } from '@/types';
 
+export const dynamic = 'force-dynamic';
+
 async function getCategoriesData() {
   await dbConnect();
 

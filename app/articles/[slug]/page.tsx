@@ -57,6 +57,8 @@ async function markdownToHtml(markdown: string) {
   return result.toString();
 }
 
+export const dynamic = 'force-dynamic';
+
 async function getArticleData(slug: string) {
   await dbConnect();
 
@@ -108,8 +110,8 @@ async function getArticleData(slug: string) {
         time: 1,
         reads: 1,
         source: 1,
-        createdAt: { $dateToString: { format: '%Y-%m-%dT%H:%M:%S.%LZ', date: '$createdAt' } },
-        updatedAt: { $dateToString: { format: '%Y-%m-%dT%H:%M:%S.%LZ', date: '$updatedAt' } },
+        createdAt: { $dateToString: { format: '%Y-%m-%dT%H:%M:%S.%LZ', date: { $toDate: '$createdAt' } } },
+        updatedAt: { $dateToString: { format: '%Y-%m-%dT%H:%M:%S.%LZ', date: { $toDate: '$updatedAt' } } },
         author: {
           _id: { $toString: '$author._id' },
           name: '$author.name',
@@ -189,7 +191,7 @@ async function getArticleData(slug: string) {
         time: 1,
         reads: 1,
         source: 1,
-        createdAt: { $dateToString: { format: '%Y-%m-%dT%H:%M:%S.%LZ', date: '$createdAt' } },
+        createdAt: { $dateToString: { format: '%Y-%m-%dT%H:%M:%S.%LZ', date: { $toDate: '$createdAt' } } },
         author: {
           name: '$author.name',
           avatar: '$author.avatar',

@@ -8,6 +8,8 @@ import Category from '@/models/Category';
 import { Metadata } from 'next';
 import { Article as ArticleType } from '@/types';
 
+export const dynamic = 'force-dynamic';
+
 async function getSearchResults(q?: string, tags?: string, categories?: string) {
   await dbConnect();
   
