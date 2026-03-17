@@ -1,0 +1,181 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Newsreader', ui-serif, Georgia, serif;
+
+  --color-primary: #0f58bd;
+  --color-primary-foreground: #ffffff;
+
+  --color-background: #f6f7f8;
+  --color-foreground: #101822;
+
+  --color-secondary: #f1f5f9;
+  --color-secondary-foreground: #0f172a;
+
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+
+  --color-accent: #f1f5f9;
+  --color-accent-foreground: #0f172a;
+
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #f8fafc;
+
+  --color-border: #e2e8f0;
+  --color-input: #e2e8f0;
+  --color-ring: #0f58bd;
+
+  --radius-DEFAULT: 0.125rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 9999px;
+}
+
+.dark {
+  --color-background: #101822;
+  --color-foreground: #f6f7f8;
+
+  --color-secondary: #1e293b;
+  --color-secondary-foreground: #f8fafc;
+
+  --color-muted: #1e293b;
+  --color-muted-foreground: #94a3b8;
+
+  --color-accent: #1e293b;
+  --color-accent-foreground: #f8fafc;
+
+  --color-destructive: #7f1d1d;
+  --color-destructive-foreground: #f8fafc;
+
+  --color-border: #1e293b;
+  --color-input: #1e293b;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased transition-colors duration-200;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif font-medium tracking-tight text-foreground/90;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.skeleton {
+  @apply bg-muted rounded-lg animate-pulse;
+}
+
+.journal-drop-cap::first-letter {
+  @apply float-left text-7xl font-serif font-medium mr-3 mt-[-0.1em] text-primary leading-[0.85];
+}
+
+.journal-heading-xl {
+  @apply text-4xl md:text-6xl font-serif font-medium leading-[1.1] tracking-tight;
+}
+
+.journal-body {
+  @apply text-base md:text-lg leading-relaxed text-foreground/80 font-serif;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-primary) 20%, transparent);
+  border-radius: 20px;
+  border: 3px solid var(--color-background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--color-primary) 40%, transparent);
+}
+
+.theme-icon {
+  display: none !important;
+}
+
+html[data-theme-choice='light'] .theme-icon-light {
+  display: block !important;
+}
+html[data-theme-choice='dark'] .theme-icon-dark {
+  display: block !important;
+}
+html[data-theme-choice='system'] .theme-icon-monitor {
+  display: block !important;
+}
+
+html:not([data-theme-choice]) .theme-icon-monitor {
+  display: block !important;
+}
+
+[data-theme-mounted='light'] .theme-icon-light {
+  display: block !important;
+}
+[data-theme-mounted='dark'] .theme-icon-dark {
+  display: block !important;
+}
+[data-theme-mounted='system'] .theme-icon-monitor {
+  display: block !important;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+span.material-symbols-outlined {
+  vertical-align: middle;
+}
