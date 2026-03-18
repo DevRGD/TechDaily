@@ -100,6 +100,34 @@
   @apply text-base md:text-lg leading-relaxed text-foreground/80 font-serif;
 }
 
+.article-content {
+  @apply prose prose-lg dark:prose-invert max-w-none;
+}
+
+.article-content :where(h1, h2, h3, h4, h5, h6) {
+  @apply font-serif italic uppercase tracking-tight;
+}
+
+.article-content :where(p, li, blockquote) {
+  @apply font-serif leading-relaxed;
+}
+
+html:not(.dark) .article-content {
+  color: var(--color-foreground) !important;
+}
+
+html:not(.dark) .article-content :where(h1, h2, h3, h4, h5, h6, p, li, blockquote, strong, em, b, i) {
+  color: var(--color-foreground) !important;
+}
+
+html:not(.dark) .article-content :where(a) {
+  color: var(--color-primary) !important;
+}
+
+html:not(.dark) .article-content :where(blockquote) {
+  @apply border-l-primary/30;
+}
+
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;

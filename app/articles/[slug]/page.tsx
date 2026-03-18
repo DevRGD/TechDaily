@@ -326,10 +326,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
 
           <div className="mx-auto md:mx-0">
-            <div
-              className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-serif prose-headings:italic prose-headings:uppercase prose-p:font-serif"
-              dangerouslySetInnerHTML={{ __html: contentHtml }}
-            />
+            <div className="article-content" dangerouslySetInnerHTML={{ __html: contentHtml }} />
           </div>
 
           {article.tags && article.tags.length > 0 && (
