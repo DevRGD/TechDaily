@@ -23,17 +23,17 @@ export const metadata: Metadata = {
   },
   description: 'Reporting for the digital age. Authority on AI, policy, and innovation.',
   keywords: ['tech news', 'AI', 'innovation', 'policy', 'startups'],
-  authors: [{ name: 'TechDaily Team' }],
+  authors: [{ name: 'DevRGD' }],
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: 'en_IN',
     url: 'https://techdaily.com',
     siteName: 'TechDaily',
     title: 'TechDaily | Premium Technology News',
     description: 'Reporting for the digital age. Authority on AI, policy, and innovation.',
     images: [
       {
-        url: 'https://techdaily.com/og-image.jpg',
+        url: 'https://techdaily.com/og-image.png',
         width: 1200,
         height: 630,
         alt: 'TechDaily',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'TechDaily | Premium Technology News',
     description: 'Reporting for the digital age. Authority on AI, policy, and innovation.',
-    images: ['https://techdaily.com/og-image.jpg'],
+    images: ['https://techdaily.com/og-image.png'],
     creator: '@techdaily',
   },
   icons: {
