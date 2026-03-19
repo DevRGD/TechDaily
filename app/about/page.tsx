@@ -18,13 +18,7 @@ export default function AboutPage() {
           </div>
 
           <div className="relative aspect-16/6 bg-secondary rounded-sm overflow-hidden shadow-lg grayscale hover:grayscale-0 transition-all duration-700">
-            <Image
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqogRt46Gbu4dIWiS625-Bj-pQWkTxJ3urfQ9YY7BHs_Cy4bjRTe-Ny-UKqqy4K544MKQi_lUa_ORGbtLUaUeFb9osXu6lQNuq0f1u_2rkJsiW3rpJ53XiWCxX6TZYjdcExj7o6rtYH6_1F_Rk7p0Gmn2rQDAKPvgBPmFMBim50vBwygXcAwTeLWPxaNjakXgdBNn38WGymeO50ZCAbZPLMmFpEfYjG84SkrZ0HZcljx6WT3t5TceT6r95pKQsXYMQQwID2xapO1rB"
-              className="object-cover"
-              alt="TechDaily Office"
-              fill
-              priority
-            />
+            <Image src="/office.jpg" className="object-cover" alt="TechDaily Office" fill priority />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 journal-body">

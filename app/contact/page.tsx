@@ -30,7 +30,7 @@ export default function ContactPage() {
                   </div>
                   <div className="flex items-center gap-4">
                     <span className="material-symbols-outlined text-muted-foreground">call</span>
-                    <Typography variant="body">+1 (415) 555-0123</Typography>
+                    <Typography variant="body">+91 (123) 456-7890</Typography>
                   </div>
                 </div>
               </div>
@@ -42,11 +42,11 @@ export default function ContactPage() {
                 <div className="flex items-start gap-4">
                   <span className="material-symbols-outlined text-muted-foreground">location_on</span>
                   <Typography variant="body">
-                    750 Market Street
+                    12 Park Street
                     <br />
-                    San Francisco, CA 94103
+                    Kolkata, West Bengal 700016
                     <br />
-                    United States
+                    India
                   </Typography>
                 </div>
               </div>

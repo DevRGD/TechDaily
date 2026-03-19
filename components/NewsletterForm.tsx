@@ -50,14 +50,42 @@ export default function NewsletterForm({ variant = 'default', className }: Newsl
           Join 50,000+ tech professionals receiving our curated deep-dives on AI and policy every morning.
         </Typography>
       </div>
-      <form className="flex flex-col sm:flex-row gap-3 max-w-xl" onSubmit={(e) => e.preventDefault()}>
-        <input
-          className="flex-1 px-4 py-3 rounded-sm border border-border bg-secondary/50 text-sm focus:ring-2 focus:ring-primary focus:bg-background outline-none transition-all"
-          placeholder="name@company.com"
-          type="email"
-          required
-        />
-        <Button className="uppercase tracking-widest text-xs px-8">Start Reading</Button>
+      <form className="flex flex-col gap-5 max-w-xl" onSubmit={(e) => e.preventDefault()}>
+        <div className="flex flex-wrap items-center gap-6 mb-1">
+          <label className="flex items-center gap-2 cursor-pointer group">
+            <div className="relative flex items-center justify-center w-5 h-5 border border-border bg-background rounded-sm group-hover:border-primary transition-colors">
+              <input type="checkbox" value="daily" className="peer sr-only" defaultChecked />
+              <span className="material-symbols-outlined text-[16px] text-primary opacity-0 peer-checked:opacity-100 transition-opacity absolute">check</span>
+            </div>
+            <Typography variant="body-sm" className="font-semibold uppercase tracking-wider text-xs text-foreground/80">Daily</Typography>
+          </label>
+          <label className="flex items-center gap-2 cursor-pointer group">
+            <div className="relative flex items-center justify-center w-5 h-5 border border-border bg-background rounded-sm group-hover:border-primary transition-colors">
+              <input type="checkbox" value="weekly" className="peer sr-only" />
+              <span className="material-symbols-outlined text-[16px] text-primary opacity-0 peer-checked:opacity-100 transition-opacity absolute">check</span>
+            </div>
+            <Typography variant="body-sm" className="font-semibold uppercase tracking-wider text-xs text-foreground/80">Weekly</Typography>
+          </label>
+          <label className="flex items-center gap-2 cursor-pointer group">
+            <div className="relative flex items-center justify-center w-5 h-5 border border-border bg-background rounded-sm group-hover:border-primary transition-colors">
+              <input type="checkbox" value="monthly" className="peer sr-only" />
+              <span className="material-symbols-outlined text-[16px] text-primary opacity-0 peer-checked:opacity-100 transition-opacity absolute">check</span>
+            </div>
+            <Typography variant="body-sm" className="font-semibold uppercase tracking-wider text-xs text-foreground/80">Monthly</Typography>
+          </label>
+        </div>
+
+        <div className="relative flex items-center w-full">
+          <input
+            className="w-full px-5 py-4 rounded-sm border border-border bg-secondary/50 text-base focus:ring-2 focus:ring-primary focus:bg-background outline-none transition-all pr-48"
+            placeholder="name@company.com"
+            type="email"
+            required
+          />
+          <Button className="absolute right-2 top-2 bottom-2 h-auto text-xs uppercase tracking-widest px-6 w-36">
+            Subscribe
+          </Button>
+        </div>
       </form>
     </div>
   );

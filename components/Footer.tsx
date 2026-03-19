@@ -5,10 +5,9 @@ const FOOTER_SECTIONS = [
   {
     title: 'Categories',
     links: [
-      { label: 'AI & Robotics', href: '/categories/ai' },
+      { label: 'Social', href: '/categories/social' },
+      { label: 'AI', href: '/categories/ai' },
       { label: 'Hardware', href: '/categories/hardware' },
-      { label: 'Software', href: '/categories/software' },
-      { label: 'Future Tech', href: '/categories/future' },
     ],
   },
   {
@@ -82,7 +81,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <Typography variant="caption" className="normal-case font-medium">
-            © 2026 TechDaily Media Group. All rights reserved. Registered in California.
+            © 2026 TechDaily Media Group. All rights reserved.
           </Typography>
           <div className="flex flex-wrap justify-center gap-8 items-center text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
             <Link href="/privacy" className="hover:text-primary transition-colors">
