@@ -8,6 +8,7 @@ import Button from './ui/Button';
 import Typography from './ui/Typography';
 import SearchInput from './SearchInput';
 import ThemeToggle from './ThemeToggle';
+import NewsletterForm from './NewsletterForm';
 import { cn } from '@/lib/utils';
 
 const NAV_LINKS = [
@@ -171,6 +172,7 @@ export default function Navbar() {
                                   src={art.image}
                                   alt={art.title}
                                   fill
+                                  sizes="96px"
                                   className="object-cover grayscale group-hover/item:grayscale-0 transition-all duration-500"
                                 />
                               </div>
@@ -229,22 +231,14 @@ export default function Navbar() {
                 <Typography variant="body-sm" className="text-[12px] leading-relaxed text-muted-foreground">
                   Get the top stories delivered to your inbox every morning. Join 50,000+ readers.
                 </Typography>
-                <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
-                  <input
-                    className="w-full bg-background border border-border/60 px-4 py-2 text-xs focus:ring-1 focus:ring-primary outline-none transition-all font-sans placeholder:text-muted-foreground/50"
-                    placeholder="Email address"
-                    type="email"
-                    required
-                    onFocus={() => setIsInputFocused(true)}
-                    onBlur={() => {
-                      setIsInputFocused(false);
-                      handleClose();
-                    }}
-                  />
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground uppercase tracking-[0.2em] text-[11px] font-black h-11 rounded-none shadow-none">
-                    Subscribe
-                  </Button>
-                </form>
+                <NewsletterForm
+                  variant="mega"
+                  onFocus={() => setIsInputFocused(true)}
+                  onBlur={() => {
+                    setIsInputFocused(false);
+                    handleClose();
+                  }}
+                />
               </div>
             </div>
           </div>

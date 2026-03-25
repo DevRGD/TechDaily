@@ -1,3 +1,4 @@
+import { Document } from 'mongoose';
 
 export interface Author {
   _id?: string;
@@ -37,4 +38,25 @@ export interface Category {
   _id?: string;
   name: string;
   slug: string;
+}
+
+export interface ISubscriber extends Document {
+  email: string;
+  preferences: {
+    daily: boolean;
+    weekly: boolean;
+    monthly: boolean;
+  };
+  isActive: boolean;
+  subscribedAt: Date;
+  unsubscribedAt?: Date;
+  otp?: string;
+}
+
+export interface INewsletter extends Document {
+  subject: string;
+  content: string;
+  type: 'daily' | 'weekly' | 'monthly';
+  status: 'draft' | 'sent';
+  sentAt?: Date;
 }

@@ -44,7 +44,7 @@ const MetadataEyebrow = ({
 
   return (
     <div
-      className={cn('flex items-center gap-x-3 gap-y-2 flex-wrap relative z-20 text-muted-foreground/60', className)}
+      className={cn('flex items-center gap-x-4 gap-y-2 flex-wrap relative z-20 text-muted-foreground/60', className)}
     >
       <AuthorMeta
         name={author.name}
@@ -54,7 +54,6 @@ const MetadataEyebrow = ({
         variant="inline"
         className="shrink-0"
       />
-      <span className="opacity-30 shrink-0">•</span>
       <Link
         href={`/categories/${categorySlug}`}
         onClick={(e) => e.stopPropagation()}
@@ -66,14 +65,12 @@ const MetadataEyebrow = ({
       <Typography variant="caption" className="whitespace-nowrap shrink-0" suppressHydrationWarning>
         {displayDate}
       </Typography>
-      <span className="opacity-30 shrink-0">•</span>
       <div className="flex items-center gap-1.5 whitespace-nowrap shrink-0">
         <span className="material-symbols-outlined text-[14px] text-primary/40">visibility</span>
         <Typography variant="caption" className="mt-0.5">
           {reads >= 1000 ? `${(reads / 1000).toFixed(1)}k` : reads} Reads
         </Typography>
       </div>
-      <span className="opacity-30 shrink-0">•</span>
       <div className="flex items-center gap-1.5 whitespace-nowrap shrink-0">
         <span className="material-symbols-outlined text-[14px] text-primary/40">schedule</span>
         <Typography variant="caption" className="mt-0.5">
@@ -82,7 +79,6 @@ const MetadataEyebrow = ({
       </div>
       {source && (
         <>
-          <span className="opacity-30 shrink-0">•</span>
           <div className="flex items-center gap-1 shrink-0 whitespace-nowrap">
             <span className="text-[10px] lowercase font-sans opacity-60 tracking-normal">via</span>
             {source.link ? (
@@ -154,8 +150,6 @@ const ListMetadata = ({
           />
         </div>
 
-        <span className="opacity-30 shrink-0">•</span>
-
         <Link
           href={`/categories/${categorySlug}`}
           onClick={(e) => e.stopPropagation()}
@@ -166,8 +160,6 @@ const ListMetadata = ({
           </Typography>
         </Link>
 
-        <span className="opacity-30 shrink-0">•</span>
-
         <div className="flex items-center gap-2 font-sans whitespace-nowrap shrink-0 text-[11px] uppercase tracking-[0.15em]">
           <span className="material-symbols-outlined text-[14px] text-primary/40">calendar_today</span>
           <span className="mt-0.5" suppressHydrationWarning>
@@ -175,14 +167,10 @@ const ListMetadata = ({
           </span>
         </div>
 
-        <span className="opacity-30 shrink-0">•</span>
-
         <div className="flex items-center gap-2 font-sans whitespace-nowrap shrink-0 text-[11px] uppercase tracking-[0.15em]">
           <span className="material-symbols-outlined text-[14px] text-primary/40">visibility</span>
           <span className="mt-0.5">{reads >= 1000 ? `${(reads / 1000).toFixed(1)}k` : reads} Reads</span>
         </div>
-
-        <span className="opacity-30 shrink-0">•</span>
 
         <div className="flex items-center gap-2 font-sans whitespace-nowrap shrink-0 text-[11px] uppercase tracking-[0.15em]">
           <span className="material-symbols-outlined text-[14px] text-primary/40">schedule</span>
@@ -191,7 +179,6 @@ const ListMetadata = ({
 
         {source && (
           <>
-            <span className="opacity-30 shrink-0">•</span>
             <div className="flex items-center gap-2 italic font-serif tracking-normal normal-case whitespace-nowrap shrink-0">
               <span className="text-muted-foreground/30 not-italic uppercase text-[10px] font-sans font-bold tracking-[0.15em]">
                 via

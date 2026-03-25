@@ -24,13 +24,9 @@ export default function ArticleListSkeleton() {
                   <Skeleton className="w-6 h-6 rounded-full" />
                   <Skeleton className="h-3 w-24" />
                 </div>
-                <span className="opacity-30 shrink-0 text-muted-foreground">•</span>
                 <Skeleton className="h-3 w-20" />
-                <span className="opacity-30 shrink-0 text-muted-foreground">•</span>
                 <Skeleton className="h-3 w-16" />
-                <span className="opacity-30 shrink-0 text-muted-foreground">•</span>
                 <Skeleton className="h-3 w-20" />
-                <span className="opacity-30 shrink-0 text-muted-foreground">•</span>
                 <Skeleton className="h-3 w-24" />
               </div>
             </div>
@@ -45,13 +41,9 @@ export default function ArticleListSkeleton() {
               <Skeleton className="w-6 h-6 rounded-full" />
               <Skeleton className="h-3 w-24" />
             </div>
-            <span className="opacity-30 shrink-0">•</span>
             <Skeleton className="h-3 w-20" />
-            <span className="opacity-30 shrink-0">•</span>
             <Skeleton className="h-3 w-16" />
-            <span className="opacity-30 shrink-0">•</span>
             <Skeleton className="h-3 w-20" />
-            <span className="opacity-30 shrink-0">•</span>
             <Skeleton className="h-3 w-24" />
           </div>
         </div>
