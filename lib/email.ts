@@ -92,7 +92,7 @@ export default async function sendEmail({ slug, to, bcc, replacements = {} }: Se
                     ? `
                 <p class="unsubscribe">
                   You are receiving this one-time notification as a confirmation of your recent account changes.<br>
-                  Changed your mind? <a href="${baseUrl}/newsletter">Rejoin the network</a> at any time.
+                  Changed your mind? <a href="${baseUrl}/newsletter?type=Daily&email=${encodeURIComponent(recipientEmail)}">Rejoin the network</a> at any time.
                 </p>`
                     : `
                 <p class="unsubscribe">
