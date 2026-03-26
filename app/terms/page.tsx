@@ -6,7 +6,7 @@ export default function TermsPage() {
   return (
     <div className="relative flex min-h-screen flex-col">
       <main className="flex-1">
-        <section className="container mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <section className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24 space-y-12">
           <div className="space-y-4 mb-20 text-left">
             <Typography variant="caption" className="text-primary font-bold">
               Legal
