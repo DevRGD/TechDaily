@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Subscriber from '@/models/Subscriber';
+import sendEmail from '@/lib/email';
 
 export async function POST(req: Request) {
   try {
@@ -23,7 +24,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Invalid OTP' }, { status: 400 });
     }
 
-    if (preference === 'unsubscribe') {
+    const isUnsubscribing = preference === 'unsubscribe';
+    if (isUnsubscribing) {
       subscriber.isActive = false;
     } else {
       subscriber.isActive = true;
@@ -33,6 +35,11 @@ export async function POST(req: Request) {
     }
     subscriber.otp = '';
     await subscriber.save();
+
+    await sendEmail({
+      slug: isUnsubscribing ? 'unsubscribed-confirmation' : 'subscribed-confirmation',
+      to: email,
+    });
 
     return NextResponse.json({ message: 'Subscription successfully verified' }, { status: 200 });
   } catch (error) {

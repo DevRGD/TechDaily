@@ -34,9 +34,9 @@ export default function Footer() {
       <div className="container mx-auto max-w-360 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
           <div className="lg:col-span-4 space-y-6">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="size-7 border-4 border-primary rounded-md shrink-0 shadow-sm shadow-primary/20" />
-              <Typography variant="h4" as="h2" className="text-[40px] uppercase tracking-tighter leading-none">
+            <Link href="/" className="inline-flex items-center gap-2">
+              <div className="size-8 border-4 border-primary rounded-[6px] shrink-0 shadow-sm shadow-primary/20" />
+              <Typography variant="h4" as="h2" className="text-[44px] uppercase tracking-tighter leading-none pt-1">
                 TechDaily
               </Typography>
             </Link>
@@ -81,7 +81,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <Typography variant="caption" className="normal-case font-medium">
-            © 2026 TechDaily Media Group. All rights reserved.
+            © 2026 Tech Daily Media. All rights reserved.
           </Typography>
           <div className="flex flex-wrap justify-center gap-8 items-center text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
             <Link href="/privacy" className="hover:text-primary transition-colors">
@@ -94,7 +94,7 @@ export default function Footer() {
               Cookies
             </Link>
             <span className="text-border">|</span>
-            <span className="text-muted-foreground/50">Designed with Precision</span>
+            <span className="text-muted-foreground/50">News Summarized by AI</span>
           </div>
         </div>
       </div>

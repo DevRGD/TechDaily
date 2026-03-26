@@ -6,12 +6,12 @@ export default function AboutPage() {
   return (
     <div className="relative flex min-h-screen flex-col">
       <main className="flex-1">
-        <section className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24 space-y-12">
+        <section className="container mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 py-16 md:py-24 space-y-12">
           <div className="space-y-6 text-left">
             <Typography variant="h1" className="uppercase text-left">
               Our Mission
             </Typography>
-            <Typography variant="lead" className="max-w-3xl text-left">
+            <Typography variant="lead" className="text-left">
               Leading the conversation on the intersection of technology, humanity, and the future. Our mission is to
               provide deep insights and rigorous analysis in a digital-first era.
             </Typography>
