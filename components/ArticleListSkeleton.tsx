@@ -18,34 +18,46 @@ export default function ArticleListSkeleton() {
           </div>
 
           <div className="hidden @[1024px]:block pt-4">
-            <div className="relative z-20 flex flex-wrap items-center gap-x-6 gap-y-4 pt-2 border-none">
-              <div className="flex items-center gap-x-6 gap-y-2 flex-wrap min-w-0">
-                <div className="flex items-center shrink-0 gap-3">
-                  <Skeleton className="w-6 h-6 rounded-full" />
-                  <Skeleton className="h-3 w-24" />
-                </div>
-                <Skeleton className="h-3 w-20" />
-                <Skeleton className="h-3 w-16" />
-                <Skeleton className="h-3 w-20" />
+            <div className="relative z-20 flex flex-wrap items-center gap-x-6 gap-y-4 text-muted-foreground/40 w-full border-none pt-2">
+              <div className="flex items-center shrink-0 gap-3">
+                <Skeleton className="w-6 h-6 rounded-full" />
                 <Skeleton className="h-3 w-24" />
               </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <Skeleton className="h-3 w-8" />
+                <Skeleton className="h-3 w-16" />
+              </div>
+
+              <div className="flex items-center shrink-0 mx-auto">
+                <Skeleton className="h-3 w-24" />
+              </div>
+
+              <Skeleton className="h-3 w-20" />
+              <Skeleton className="h-3 w-20" />
+              <Skeleton className="h-3 w-24" />
             </div>
           </div>
         </div>
       </div>
 
       <div className="@[1024px]:hidden w-full">
-        <div className="relative z-20 flex flex-wrap items-center gap-x-6 gap-y-4 pt-6 text-muted-foreground/40 border-t border-border/30">
-          <div className="flex items-center gap-x-6 gap-y-2 flex-wrap min-w-0">
-            <div className="flex items-center shrink-0 gap-3">
-              <Skeleton className="w-6 h-6 rounded-full" />
-              <Skeleton className="h-3 w-24" />
-            </div>
-            <Skeleton className="h-3 w-20" />
-            <Skeleton className="h-3 w-16" />
-            <Skeleton className="h-3 w-20" />
+        <div className="relative z-20 flex flex-wrap items-center gap-x-6 gap-y-4 pt-6 text-muted-foreground/40 w-full border-t border-border/30">
+          <div className="flex items-center shrink-0 gap-3">
+            <Skeleton className="w-6 h-6 rounded-full" />
             <Skeleton className="h-3 w-24" />
           </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <Skeleton className="h-3 w-8" />
+            <Skeleton className="h-3 w-16" />
+          </div>
+
+          <div className="flex items-center shrink-0 mx-auto">
+            <Skeleton className="h-3 w-24" />
+          </div>
+
+          <Skeleton className="h-3 w-20" />
+          <Skeleton className="h-3 w-20" />
+          <Skeleton className="h-3 w-24" />
         </div>
       </div>
     </div>

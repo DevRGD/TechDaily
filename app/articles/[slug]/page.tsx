@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Typography from '@/components/ui/Typography';
 import AuthorMeta from '@/components/AuthorMeta';
 import ArticleCard from '@/components/ArticleCard';
+import ViewCounter from '@/components/ViewCounter';
 import Link from 'next/link';
 import { remark } from 'remark';
 import html from 'remark-html';
@@ -61,8 +62,6 @@ export const dynamic = 'force-dynamic';
 
 async function getArticleData(slug: string) {
   await dbConnect();
-
-  await Article.updateOne({ slug }, { $inc: { reads: 1 } });
 
   const articles = await Article.aggregate([
     { $match: { slug: slug } },
@@ -231,6 +230,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   return (
     <div className="relative flex min-h-screen flex-col">
+      <ViewCounter slug={slug} />
       <main className="flex-1">
         <article className="container mx-auto max-w-7xl px-4 py-16 md:py-24 space-y-12">
           <div className="space-y-8 w-full">
@@ -248,22 +248,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               <Image src={article.image} alt={article.title} fill className="object-cover" priority />
             </div>
 
-            <div className="relative z-20 flex flex-wrap items-center gap-x-6 gap-y-4 py-6 border-y border-border/50 text-muted-foreground/70">
-              <div className="flex items-center gap-x-6 gap-y-2 flex-wrap min-w-0">
-                <div className="flex items-center gap-2 shrink-0 flex-wrap">
-                  {article.categories.map((cat: Category, index: number) => (
-                    <Link
-                      key={index}
-                      href={`/categories/${cat.slug}`}
-                      className="text-[11px] font-bold uppercase tracking-[0.15em] text-primary bg-primary/10 px-3.5 py-1.5 rounded-sm hover:bg-primary/20 transition-all cursor-pointer whitespace-nowrap relative z-30 focus:outline-none"
-                    >
-                      {cat.name}
-                    </Link>
-                  ))}
-                </div>
-
-                <span className="opacity-30 shrink-0">•</span>
-
+            <div className="relative z-20 py-6 border-y border-border/50 text-muted-foreground/70 w-full">
+              <div className="flex items-center gap-x-6 gap-y-3 flex-wrap w-full">
                 <div className="flex items-center shrink-0">
                   <AuthorMeta
                     name={article.author.name}
@@ -273,15 +259,46 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                     variant="inline"
                   />
                 </div>
+                {article.source && (
+                  <div className="flex items-center gap-2 italic font-serif tracking-normal normal-case whitespace-nowrap shrink-0">
+                    <span className="text-muted-foreground/40 not-italic uppercase text-[9px] font-sans tracking-widest">
+                      via
+                    </span>
+                    {article.source.link ? (
+                      <a
+                        href={article.source.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[11px] font-bold text-foreground/90 hover:text-primary transition-all uppercase tracking-widest font-sans not-italic"
+                      >
+                        {article.source.name}
+                      </a>
+                    ) : (
+                      <span className="text-[11px] font-bold text-foreground/90 uppercase tracking-widest font-sans not-italic">
+                        {article.source.name}
+                      </span>
+                    )}
+                  </div>
+                )}
 
-                <span className="opacity-30 shrink-0">•</span>
+                <div className="flex items-center shrink-0 md:mx-auto">
+                  <div className="flex items-center gap-2 shrink-0 flex-wrap justify-center">
+                    {article.categories.map((cat: Category, index: number) => (
+                      <Link
+                        key={index}
+                        href={`/categories/${cat.slug}`}
+                        className="text-[11px] font-bold uppercase tracking-[0.15em] text-primary bg-primary/10 px-3.5 py-1.5 rounded-sm hover:bg-primary/20 transition-all cursor-pointer whitespace-nowrap relative z-30 focus:outline-none"
+                      >
+                        {cat.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
 
                 <div className="flex items-center gap-2 whitespace-nowrap shrink-0 text-[10px] font-semibold uppercase tracking-widest">
                   <span className="material-symbols-outlined text-[14px] text-primary/40">calendar_today</span>
                   <span className="mt-0.5">{displayDate}</span>
                 </div>
-
-                <span className="opacity-30 shrink-0">•</span>
 
                 <div className="flex items-center gap-2 whitespace-nowrap shrink-0 text-[10px] font-semibold uppercase tracking-widest">
                   <span className="material-symbols-outlined text-[14px] text-primary/40">visibility</span>
@@ -290,37 +307,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                   </span>
                 </div>
 
-                <span className="opacity-30 shrink-0">•</span>
-
                 <div className="flex items-center gap-2 whitespace-nowrap shrink-0 text-[10px] font-semibold uppercase tracking-widest">
                   <span className="material-symbols-outlined text-[14px] text-primary/40">schedule</span>
                   <span className="mt-0.5">{article.time} min read</span>
                 </div>
-
-                {article.source && (
-                  <>
-                    <span className="opacity-30 shrink-0">•</span>
-                    <div className="flex items-center gap-2 italic font-serif tracking-normal normal-case whitespace-nowrap shrink-0">
-                      <span className="text-muted-foreground/40 not-italic uppercase text-[9px] font-sans tracking-widest">
-                        via
-                      </span>
-                      {article.source.link ? (
-                        <a
-                          href={article.source.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[11px] font-bold text-foreground/90 hover:text-primary transition-all uppercase tracking-widest font-sans not-italic"
-                        >
-                          {article.source.name}
-                        </a>
-                      ) : (
-                        <span className="text-[11px] font-bold text-foreground/90 uppercase tracking-widest font-sans not-italic">
-                          {article.source.name}
-                        </span>
-                      )}
-                    </div>
-                  </>
-                )}
               </div>
             </div>
           </div>

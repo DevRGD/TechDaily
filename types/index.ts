@@ -42,21 +42,25 @@ export interface Category {
 
 export interface ISubscriber extends Document {
   email: string;
-  preferences: {
-    daily: boolean;
-    weekly: boolean;
-    monthly: boolean;
-  };
+  preference: 'daily' | 'weekly' | 'monthly';
   isActive: boolean;
-  subscribedAt: Date;
-  unsubscribedAt?: Date;
   otp?: string;
+  sentAt?: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
-export interface INewsletter extends Document {
+export interface IEmail extends Document {
+  slug: string;
   subject: string;
   content: string;
-  type: 'daily' | 'weekly' | 'monthly';
-  status: 'draft' | 'sent';
-  sentAt?: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+export interface SendEmailOptions {
+  slug: string;
+  to: string | string[];
+  bcc?: string[];
+  replacements?: Record<string, string>;
 }

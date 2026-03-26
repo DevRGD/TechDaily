@@ -4,15 +4,10 @@ import { ISubscriber } from '@/types';
 const SubscriberSchema: Schema = new Schema(
   {
     email: { type: String, required: true, unique: true, trim: true, lowercase: true },
-    preferences: {
-      daily: { type: Boolean, default: false },
-      weekly: { type: Boolean, default: false },
-      monthly: { type: Boolean, default: false },
-    },
-    isActive: { type: Boolean, default: true },
+    preference: { type: String, enum: ['daily', 'weekly', 'monthly'], default: 'daily' },
+    isActive: { type: Boolean, default: false },
     otp: { type: String },
-    subscribedAt: { type: Date, default: Date.now },
-    unsubscribedAt: { type: Date },
+    sentAt: { type: Date, default: Date.now },
   },
   { timestamps: true },
 );

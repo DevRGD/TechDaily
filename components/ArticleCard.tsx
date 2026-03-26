@@ -43,9 +43,7 @@ const MetadataEyebrow = ({
   const categorySlug = typeof primaryCategory === 'string' ? primaryCategory.toLowerCase() : primaryCategory?.slug;
 
   return (
-    <div
-      className={cn('flex items-center gap-x-4 gap-y-2 flex-wrap relative z-20 text-muted-foreground/60', className)}
-    >
+    <div className={cn('flex flex-wrap items-center gap-x-4 gap-y-2 w-full relative z-20 text-muted-foreground/60', className)}>
       <AuthorMeta
         name={author.name}
         avatar={author.avatar}
@@ -54,14 +52,37 @@ const MetadataEyebrow = ({
         variant="inline"
         className="shrink-0"
       />
-      <Link
-        href={`/categories/${categorySlug}`}
-        onClick={(e) => e.stopPropagation()}
-        className="text-primary hover:underline cursor-pointer relative z-30 inline-block focus:outline-none whitespace-nowrap shrink-0"
-      >
-        <Typography variant="caption">{categoryName}</Typography>
-      </Link>
-      <span className="opacity-30 shrink-0">•</span>
+      {source && (
+        <div className="flex items-center gap-1 shrink-0 whitespace-nowrap">
+          <span className="text-[10px] lowercase font-sans opacity-60 tracking-normal">via</span>
+          {source.link ? (
+            <a
+              href={source.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="text-[11px] font-bold text-foreground/80 hover:text-primary transition-all cursor-pointer relative z-30 not-italic uppercase tracking-widest font-sans"
+            >
+              {source.name}
+            </a>
+          ) : (
+            <span className="text-[11px] font-bold text-foreground/80 uppercase tracking-widest font-sans not-italic">
+              {source.name}
+            </span>
+          )}
+        </div>
+      )}
+
+      <div className="flex items-center shrink-0 mx-auto">
+        <Link
+          href={`/categories/${categorySlug}`}
+          onClick={(e) => e.stopPropagation()}
+          className="text-primary hover:underline cursor-pointer relative z-30 inline-block focus:outline-none whitespace-nowrap"
+        >
+          <Typography variant="caption">{categoryName}</Typography>
+        </Link>
+      </div>
+
       <Typography variant="caption" className="whitespace-nowrap shrink-0" suppressHydrationWarning>
         {displayDate}
       </Typography>
@@ -77,28 +98,6 @@ const MetadataEyebrow = ({
           {time} Min Read
         </Typography>
       </div>
-      {source && (
-        <>
-          <div className="flex items-center gap-1 shrink-0 whitespace-nowrap">
-            <span className="text-[10px] lowercase font-sans opacity-60 tracking-normal">via</span>
-            {source.link ? (
-              <a
-                href={source.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="text-[11px] font-bold text-foreground/80 hover:text-primary transition-all cursor-pointer relative z-30 not-italic uppercase tracking-widest font-sans"
-              >
-                {source.name}
-              </a>
-            ) : (
-              <span className="text-[11px] font-bold text-foreground/80 uppercase tracking-widest font-sans not-italic">
-                {source.name}
-              </span>
-            )}
-          </div>
-        </>
-      )}
     </div>
   );
 };
@@ -135,72 +134,69 @@ const ListMetadata = ({
   return (
     <div
       className={cn(
-        'relative z-20 flex flex-wrap items-center gap-x-6 gap-y-4 pt-6 text-muted-foreground/40',
+        'relative z-20 flex flex-wrap items-center gap-x-6 gap-y-4 pt-6 text-muted-foreground/40 w-full',
         isNested ? 'border-none pt-2' : 'border-t border-border/30',
       )}
     >
-      <div className="flex items-center gap-x-6 gap-y-2 flex-wrap min-w-0">
-        <div className="flex items-center shrink-0">
-          <AuthorMeta
-            name={author.name}
-            avatar={author.avatar}
-            date={createdAt || ''}
-            link={author.link}
-            variant="inline"
-          />
+      <div className="flex items-center shrink-0">
+        <AuthorMeta
+          name={author.name}
+          avatar={author.avatar}
+          date={createdAt || ''}
+          link={author.link}
+          variant="inline"
+        />
+      </div>
+      {source && (
+        <div className="flex items-center gap-2 italic font-serif tracking-normal normal-case whitespace-nowrap shrink-0">
+          <span className="text-muted-foreground/30 not-italic uppercase text-[10px] font-sans font-bold tracking-[0.15em]">
+            via
+          </span>
+          {source.link ? (
+            <a
+              href={source.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="text-[12px] font-bold text-foreground/80 hover:text-primary transition-all cursor-pointer relative z-30 not-italic uppercase tracking-widest font-sans"
+            >
+              {source.name}
+            </a>
+          ) : (
+            <span className="text-[12px] font-bold text-foreground/80 uppercase tracking-widest font-sans not-italic">
+              {source.name}
+            </span>
+          )}
         </div>
+      )}
 
+      <div className="flex items-center shrink-0 mx-auto">
         <Link
           href={`/categories/${categorySlug}`}
           onClick={(e) => e.stopPropagation()}
-          className="text-primary hover:underline cursor-pointer relative z-30 focus:outline-none shrink-0"
+          className="text-primary hover:underline cursor-pointer relative z-30 focus:outline-none"
         >
           <Typography variant="caption" className="tracking-[0.2em] text-[11px] font-bold whitespace-nowrap">
             {categoryName}
           </Typography>
         </Link>
+      </div>
 
-        <div className="flex items-center gap-2 font-sans whitespace-nowrap shrink-0 text-[11px] uppercase tracking-[0.15em]">
-          <span className="material-symbols-outlined text-[14px] text-primary/40">calendar_today</span>
-          <span className="mt-0.5" suppressHydrationWarning>
-            {displayDate}
-          </span>
-        </div>
+      <div className="flex items-center gap-2 font-sans whitespace-nowrap shrink-0 text-[11px] uppercase tracking-[0.15em]">
+        <span className="material-symbols-outlined text-[14px] text-primary/40">calendar_today</span>
+        <span className="mt-0.5" suppressHydrationWarning>
+          {displayDate}
+        </span>
+      </div>
 
-        <div className="flex items-center gap-2 font-sans whitespace-nowrap shrink-0 text-[11px] uppercase tracking-[0.15em]">
-          <span className="material-symbols-outlined text-[14px] text-primary/40">visibility</span>
-          <span className="mt-0.5">{reads >= 1000 ? `${(reads / 1000).toFixed(1)}k` : reads} Reads</span>
-        </div>
+      <div className="flex items-center gap-2 font-sans whitespace-nowrap shrink-0 text-[11px] uppercase tracking-[0.15em]">
+        <span className="material-symbols-outlined text-[14px] text-primary/40">visibility</span>
+        <span className="mt-0.5">{reads >= 1000 ? `${(reads / 1000).toFixed(1)}k` : reads} Reads</span>
+      </div>
 
-        <div className="flex items-center gap-2 font-sans whitespace-nowrap shrink-0 text-[11px] uppercase tracking-[0.15em]">
-          <span className="material-symbols-outlined text-[14px] text-primary/40">schedule</span>
-          <span className="mt-0.5">{time} Min Read</span>
-        </div>
-
-        {source && (
-          <>
-            <div className="flex items-center gap-2 italic font-serif tracking-normal normal-case whitespace-nowrap shrink-0">
-              <span className="text-muted-foreground/30 not-italic uppercase text-[10px] font-sans font-bold tracking-[0.15em]">
-                via
-              </span>
-              {source.link ? (
-                <a
-                  href={source.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="text-[12px] font-bold text-foreground/80 hover:text-primary transition-all cursor-pointer relative z-30 not-italic uppercase tracking-widest font-sans"
-                >
-                  {source.name}
-                </a>
-              ) : (
-                <span className="text-[12px] font-bold text-foreground/80 uppercase tracking-widest font-sans not-italic">
-                  {source.name}
-                </span>
-              )}
-            </div>
-          </>
-        )}
+      <div className="flex items-center gap-2 font-sans whitespace-nowrap shrink-0 text-[11px] uppercase tracking-[0.15em]">
+        <span className="material-symbols-outlined text-[14px] text-primary/40">schedule</span>
+        <span className="mt-0.5">{time} Min Read</span>
       </div>
     </div>
   );
@@ -244,72 +240,63 @@ export default function ArticleCard({
           </div>
 
           <div className="p-8 md:p-12 lg:p-16 space-y-6 md:space-y-8 max-w-7xl mx-auto w-full">
-            <div className="relative z-20 flex flex-col md:flex-row md:items-center justify-between gap-y-6 pb-6 border-b border-border/50">
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-                <div className="flex items-center shrink-0">
-                  <Link
-                    href={`/categories/${categorySlug}`}
-                    onClick={(e) => e.stopPropagation()}
-                    className="text-[11px] font-bold uppercase tracking-[0.15em] text-primary bg-primary/10 px-3.5 py-1.5 rounded-sm hover:bg-primary/20 transition-all cursor-pointer whitespace-nowrap relative z-30 focus:outline-none"
-                  >
-                    {categoryName}
-                  </Link>
-                </div>
+            <div className="relative z-20 flex flex-wrap items-center gap-x-6 gap-y-4 pb-6 border-b border-border/50 w-full">
+              <div className="flex items-center shrink-0">
+                <AuthorMeta
+                  name={author.name}
+                  avatar={author.avatar}
+                  date={createdAt || ''}
+                  link={author.link}
+                  variant="inline"
+                />
+              </div>
+              {source && (
+                <>
+                  <div className="h-4 w-px bg-border/40 hidden sm:block shrink-0" />
+                  <div className="flex items-center gap-2 italic font-serif tracking-normal normal-case whitespace-nowrap shrink-0">
+                    <span className="text-muted-foreground/40 not-italic uppercase text-[9px] font-sans tracking-widest">
+                      Source:
+                    </span>
+                    {source.link ? (
+                      <a
+                        href={source.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-[11px] font-bold text-foreground/90 hover:text-primary transition-all cursor-pointer relative z-30"
+                      >
+                        {source.name}
+                      </a>
+                    ) : (
+                      <span className="text-[11px] font-bold text-foreground/90">{source.name}</span>
+                    )}
+                  </div>
+                </>
+              )}
 
-                <div className="h-4 w-px bg-border/40 hidden sm:block" />
-
-                <div className="flex items-center shrink-0">
-                  <AuthorMeta
-                    name={author.name}
-                    avatar={author.avatar}
-                    date={createdAt || ''}
-                    link={author.link}
-                    variant="inline"
-                  />
-                </div>
+              <div className="flex items-center shrink-0 mx-auto">
+                <Link
+                  href={`/categories/${categorySlug}`}
+                  onClick={(e) => e.stopPropagation()}
+                  className="text-[11px] font-bold uppercase tracking-[0.15em] text-primary bg-primary/10 px-3.5 py-1.5 rounded-sm hover:bg-primary/20 transition-all cursor-pointer whitespace-nowrap relative z-30 focus:outline-none"
+                >
+                  {categoryName}
+                </Link>
               </div>
 
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[10px] font-semibold text-muted-foreground/70 uppercase tracking-widest whitespace-nowrap shrink-0">
-                <div className="flex items-center gap-4 flex-nowrap">
-                  <div className="flex items-center gap-2 whitespace-nowrap shrink-0">
-                    <span className="material-symbols-outlined text-[14px] text-primary/40">calendar_today</span>
-                    <span className="mt-0.5" suppressHydrationWarning>
-                      {displayDate}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 whitespace-nowrap shrink-0">
-                    <span className="material-symbols-outlined text-[14px] text-primary/40">visibility</span>
-                    <span className="mt-0.5">{reads >= 1000 ? `${(reads / 1000).toFixed(1)}k` : reads} Reads</span>
-                  </div>
-                  <div className="flex items-center gap-2 whitespace-nowrap shrink-0">
-                    <span className="material-symbols-outlined text-[14px] text-primary/40">schedule</span>
-                    <span className="mt-0.5">{time} Min Read</span>
-                  </div>
-                </div>
-
-                {source && (
-                  <>
-                    <div className="h-4 w-px bg-border/40 hidden sm:block shrink-0" />
-                    <div className="flex items-center gap-2 italic font-serif tracking-normal normal-case whitespace-nowrap shrink-0">
-                      <span className="text-muted-foreground/40 not-italic uppercase text-[9px] font-sans tracking-widest">
-                        Source:
-                      </span>
-                      {source.link ? (
-                        <a
-                          href={source.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="text-[11px] font-bold text-foreground/90 hover:text-primary transition-all cursor-pointer relative z-30"
-                        >
-                          {source.name}
-                        </a>
-                      ) : (
-                        <span className="text-[11px] font-bold text-foreground/90">{source.name}</span>
-                      )}
-                    </div>
-                  </>
-                )}
+              <div className="flex items-center gap-2 whitespace-nowrap shrink-0 text-[10px] font-semibold text-muted-foreground/70 uppercase tracking-widest">
+                <span className="material-symbols-outlined text-[14px] text-primary/40">calendar_today</span>
+                <span className="mt-0.5" suppressHydrationWarning>
+                  {displayDate}
+                </span>
+              </div>
+              <div className="flex items-center gap-2 whitespace-nowrap shrink-0 text-[10px] font-semibold text-muted-foreground/70 uppercase tracking-widest">
+                <span className="material-symbols-outlined text-[14px] text-primary/40">visibility</span>
+                <span className="mt-0.5">{reads >= 1000 ? `${(reads / 1000).toFixed(1)}k` : reads} Reads</span>
+              </div>
+              <div className="flex items-center gap-2 whitespace-nowrap shrink-0 text-[10px] font-semibold text-muted-foreground/70 uppercase tracking-widest">
+                <span className="material-symbols-outlined text-[14px] text-primary/40">schedule</span>
+                <span className="mt-0.5">{time} Min Read</span>
               </div>
             </div>
 

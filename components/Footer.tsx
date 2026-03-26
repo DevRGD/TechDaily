@@ -35,8 +35,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
           <div className="lg:col-span-4 space-y-6">
             <Link href="/" className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-3xl font-bold">terminal</span>
-              <Typography variant="h4" as="h2" className="uppercase tracking-tighter">
+              <div className="size-7 border-4 border-primary rounded-md shrink-0 shadow-sm shadow-primary/20" />
+              <Typography variant="h4" as="h2" className="text-[40px] uppercase tracking-tighter leading-none">
                 TechDaily
               </Typography>
             </Link>

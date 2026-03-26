@@ -13,10 +13,10 @@ export default function NewsletterPage() {
               Newsletter
             </Typography>
             <Typography variant="h1" className="uppercase text-left tracking-tighter">
-              The Pulse of Innovation.
+              Subscription Center.
             </Typography>
             <Typography variant="lead" className="max-w-4xl text-left opacity-70 italic font-serif">
-              Join 500,000+ tech leaders for our weekly briefing on AI, hardware, and the digital economy.
+              Subscribe to the briefings, change your subscription type, or securely unsubscribe.
             </Typography>
           </div>
 

@@ -22,22 +22,33 @@ export default function ArticleLoading() {
               <Skeleton className="absolute inset-0 w-full h-full rounded-none" />
             </div>
 
-            <div className="relative z-20 flex flex-wrap items-center gap-x-6 gap-y-4 py-6 border-y border-border/50">
-              <div className="flex items-center gap-x-6 gap-y-2 flex-wrap min-w-0">
-                <div className="flex items-center gap-3">
-                  <Skeleton className="h-8 w-24" />
-                </div>
-                <span className="opacity-30 shrink-0 text-muted-foreground">•</span>
-                <div className="flex items-center gap-3">
+            <div className="relative z-20 py-6 border-y border-border/50 w-full">
+              <div className="flex items-center gap-x-6 gap-y-4 flex-wrap w-full text-muted-foreground/70">
+                <div className="flex items-center shrink-0 gap-3">
                   <Skeleton className="w-6 h-6 rounded-full" />
-                  <Skeleton className="h-4 w-32" />
+                  <Skeleton className="h-3 w-24" />
                 </div>
-                <span className="opacity-30 shrink-0 text-muted-foreground">•</span>
-                <Skeleton className="h-4 w-24" />
-                <span className="opacity-30 shrink-0 text-muted-foreground">•</span>
-                <Skeleton className="h-4 w-20" />
-                <span className="opacity-30 shrink-0 text-muted-foreground">•</span>
-                <Skeleton className="h-4 w-24" />
+                <div className="flex items-center gap-2 shrink-0">
+                  <Skeleton className="h-3 w-6" />
+                  <Skeleton className="h-3 w-16" />
+                </div>
+
+                <div className="flex items-center shrink-0 md:mx-auto">
+                  <Skeleton className="h-7 w-20 rounded-sm" />
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <span className="material-symbols-outlined text-[14px] text-muted-foreground/20">calendar_today</span>
+                  <Skeleton className="h-3 w-20" />
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  <span className="material-symbols-outlined text-[14px] text-muted-foreground/20">visibility</span>
+                  <Skeleton className="h-3 w-16" />
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  <span className="material-symbols-outlined text-[14px] text-muted-foreground/20">schedule</span>
+                  <Skeleton className="h-3 w-16" />
+                </div>
               </div>
             </div>
           </div>
