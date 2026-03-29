@@ -54,15 +54,15 @@ export default async function sendEmail({ slug, to, bcc, replacements = {} }: Se
           <meta charset="utf-8">
           <style>
             body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #09090b; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
-            .wrapper { width: 100%; table-layout: fixed; background-color: #09090b; padding: 40px 0 60px 0; }
-            .container { max-width: 600px; margin: 0 auto; width: 100%; background-color: transparent; }
-            .header { padding: 0 24px 40px; text-align: left; }
+            .wrapper { width: 100%; table-layout: fixed; background-color: #09090b; padding: 40px 0; }
+            .container { width: 100%; margin: 0 auto; background-color: transparent; }
+            .header { padding: 0 5% 40px; text-align: left; }
             .header-content { display: inline-block; border-bottom: 1px solid #27272a; padding-bottom: 24px; width: 100%; }
             .header h1 { margin: 0; font-size: 44px; line-height: 44px; font-weight: 800; color: #ffffff; letter-spacing: -0.02em; text-transform: uppercase; }
-            .content { padding: 0 24px; color: #d4d4d8; font-size: 16px; line-height: 1.7; text-align: left; }
+            .content { padding: 0 5%; color: #d4d4d8; font-size: 16px; line-height: 1.7; text-align: left; }
             .content h2 { margin: 0 0 16px; font-size: 28px; line-height: 1.3; font-weight: 800; color: #ffffff; letter-spacing: -0.02em; }
             .content p { margin: 0 0 24px; }
-            .footer { padding: 40px 24px; text-align: left; margin-top: 48px; border-top: 1px solid #27272a; }
+            .footer { padding: 48px 5%; text-align: left; margin-top: 48px; }
             .footer-links { margin: 0 0 24px; }
             .footer-links a { color: #f4f4f5; text-decoration: none; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding-right: 24px; display: inline-block; }
             .unsubscribe { margin: 0; font-size: 13px; color: #71717a; line-height: 1.6; }
@@ -94,6 +94,7 @@ export default async function sendEmail({ slug, to, bcc, replacements = {} }: Se
               </div>
 
               <div class="footer">
+                <hr style="border: 0; border-top: 1px solid #27272a; margin: 0 0 48px 0;">
                 <div class="footer-links">
                   <a href="${baseUrl}/articles">Latest Stories</a>
                   <a href="${baseUrl}/newsletter?type=${currentType}&email=${encodeURIComponent(recipientEmail)}">Manage Preferences</a>

@@ -28,7 +28,7 @@ export default function NewsletterPage() {
             <div className="grid grid-cols-1 gap-12 text-left">
               <div className="space-y-4">
                 <span className="material-symbols-outlined text-primary text-3xl font-bold">bolt</span>
-                <Typography variant="h4">Real-time Signals</Typography>
+                <Typography variant="h4">Real time Signals</Typography>
                 <Typography variant="body-sm">
                   Daily updates on market shifts and emerging technologies before they hit the main feed.
                 </Typography>
