@@ -39,6 +39,11 @@ export async function POST(req: Request) {
     await sendEmail({
       slug: isUnsubscribing ? 'unsubscribed-confirmation' : 'subscribed-confirmation',
       to: email,
+      replacements: {
+        preheader: isUnsubscribing 
+          ? 'You have successfully unsubscribed from TechDaily.' 
+          : 'Welcome to the network! Your subscription is now active.'
+      }
     });
 
     return NextResponse.json({ message: 'Subscription successfully verified' }, { status: 200 });

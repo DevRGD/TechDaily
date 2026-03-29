@@ -28,7 +28,11 @@ export async function POST(req: Request) {
       await sendEmail({
         slug: 'otp-verification',
         to: email,
-        replacements: { otp, preference: 'Unsubscribe' },
+        replacements: { 
+          otp, 
+          preference: 'Unsubscribe',
+          preheader: 'Your secure verification code for unsubscription.'
+        },
       });
 
       return NextResponse.json({ message: 'OTP sent to confirm unsubscription' }, { status: 200 });
@@ -51,7 +55,11 @@ export async function POST(req: Request) {
       await sendEmail({
         slug: 'otp-verification',
         to: email,
-        replacements: { otp, preference: preference.charAt(0).toUpperCase() + preference.slice(1) },
+        replacements: { 
+          otp, 
+          preference: preference.charAt(0).toUpperCase() + preference.slice(1),
+          preheader: 'Your secure verification code to update your preferences.'
+        },
       });
 
       return NextResponse.json({ message: 'OTP sent successfully' }, { status: 200 });
@@ -75,7 +83,11 @@ export async function POST(req: Request) {
     await sendEmail({
       slug: 'otp-verification',
       to: email,
-      replacements: { otp, preference: (preference || 'daily').charAt(0).toUpperCase() + (preference || 'daily').slice(1) },
+      replacements: { 
+        otp, 
+        preference: (preference || 'daily').charAt(0).toUpperCase() + (preference || 'daily').slice(1),
+        preheader: 'Your secure verification code to join TechDaily.'
+      },
     });
 
     return NextResponse.json({ message: 'OTP sent successfully' }, { status: 200 });
