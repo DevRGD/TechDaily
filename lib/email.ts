@@ -36,6 +36,17 @@ export default async function sendEmail({ slug, to, bcc, replacements = {} }: Se
   if (allRecipients.length === 0) return;
 
   const sendPromises = allRecipients.map(async (recipientEmail) => {
+    const typeMapping: Record<string, string> = {
+      'daily-dispatch': 'Daily',
+      'weekly-pulse': 'Weekly',
+      'monthly-pulse': 'Monthly',
+      'subscribed-confirmation': 'Daily',
+      'unsubscribed-confirmation': 'Unsubscribe',
+      'otp-verification': replacements.preference || 'Daily',
+    };
+
+    const currentType = typeMapping[slug] || 'Daily';
+
     const personalizedHtml = `
       <!DOCTYPE html>
       <html>
@@ -85,7 +96,7 @@ export default async function sendEmail({ slug, to, bcc, replacements = {} }: Se
               <div class="footer">
                 <div class="footer-links">
                   <a href="${baseUrl}/articles">Latest Stories</a>
-                  <a href="${baseUrl}/newsletter">Manage Preferences</a>
+                  <a href="${baseUrl}/newsletter?type=${currentType}&email=${encodeURIComponent(recipientEmail)}">Manage Preferences</a>
                 </div>
                 ${
                   slug === 'unsubscribed-confirmation'
