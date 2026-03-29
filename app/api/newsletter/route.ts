@@ -66,11 +66,20 @@ export async function GET(req: Request) {
       year: 'numeric',
     });
 
+    const preheaderMapping: Record<string, string> = {
+      'daily': `Your daily intelligence briefing for ${formattedDate}.`,
+      'weekly': `Beyond the news cycle: Weekly Review for ${formattedDate}.`,
+      'monthly': `The definitive guide: Monthly Retrospective for ${formattedDate}.`,
+    };
+
     await sendEmail({
       slug,
       to: [],
       bcc: recipientEmails,
-      replacements: { date: formattedDate },
+      replacements: { 
+        date: formattedDate,
+        preheader: preheaderMapping[type] || 'Your latest update from TechDaily.'
+      },
     });
 
     await Subscriber.updateMany({ _id: { $in: subscribers.map((s) => s._id) } }, { $set: { sentAt: todayOnly } });

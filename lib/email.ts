@@ -47,6 +47,7 @@ export default async function sendEmail({ slug, to, bcc, replacements = {} }: Se
 
     const currentType = typeMapping[slug] || 'Daily';
 
+    const uniqueTag = `v=${Date.now()}`;
     const personalizedHtml = `
       <!DOCTYPE html>
       <html>
@@ -70,8 +71,10 @@ export default async function sendEmail({ slug, to, bcc, replacements = {} }: Se
           </style>
         </head>
         <body>
-          <div style="display: none; height: 0; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #09090b;">
-            ${Date.now()}_${Math.random().toString(36).substring(7)}
+          <div style="display: none; height: 0; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #ffffff; opacity: 0; mso-hide: all;">
+            ${replacements.preheader || 'Your daily intelligence briefing from TechDaily.'}
+            &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+            [ID: ${Date.now()}_${Math.random().toString(36).substring(7)}]
           </div>
           <center class="wrapper">
             <div class="container">
@@ -99,20 +102,22 @@ export default async function sendEmail({ slug, to, bcc, replacements = {} }: Se
               <div class="footer">
                 <hr style="border: 0; border-top: 1px solid #27272a; margin: 0 0 48px 0;">
                 <div class="footer-links">
-                  <a href="${baseUrl}/articles">Latest Stories</a>
-                  <a href="${baseUrl}/newsletter?type=${currentType}&email=${encodeURIComponent(recipientEmail)}">Manage Preferences</a>
+                  <a href="${baseUrl}/articles?${uniqueTag}">Latest Stories</a>
+                  <a href="${baseUrl}/newsletter?type=${currentType}&email=${encodeURIComponent(recipientEmail)}&${uniqueTag}">Manage Preferences</a>
                 </div>
                 ${
                   slug === 'unsubscribed-confirmation'
                     ? `
                 <p class="unsubscribe">
                   You are receiving this one-time notification as a confirmation of your recent account changes.<br>
-                  Changed your mind? <a href="${baseUrl}/newsletter?type=Daily&email=${encodeURIComponent(recipientEmail)}">Rejoin the network</a> at any time.
+                  Changed your mind? <a href="${baseUrl}/newsletter?type=Daily&email=${encodeURIComponent(recipientEmail)}&${uniqueTag}">Rejoin the network</a> at any time.<br>
+                  By DevRGD
                 </p>`
                     : `
                 <p class="unsubscribe">
                   You are receiving this premium briefing because you subscribed to TechDaily.<br>
-                  Changed your mind? <a href="${baseUrl}/newsletter?type=Unsubscribe&email=${encodeURIComponent(recipientEmail)}">Unsubscribe</a>.
+                  Changed your mind? <a href="${baseUrl}/newsletter?type=Unsubscribe&email=${encodeURIComponent(recipientEmail)}&${uniqueTag}">Unsubscribe</a>.<br>
+                  By DevRGD
                 </p>`
                 }
               </div>
@@ -124,10 +129,15 @@ export default async function sendEmail({ slug, to, bcc, replacements = {} }: Se
 
     const textContent = personalizedHtml.replace(/<[^>]*>?/gm, '');
 
+    const subjectTag = `[#${Math.random().toString(36).substring(7).toUpperCase()}]`;
+    const subjectText = emailTemplate.subject.includes('{{date}}')
+      ? emailTemplate.subject.replace('{{date}}', replacements.date || '')
+      : `${emailTemplate.subject}${replacements.date ? ` — ${replacements.date}` : ''} ${subjectTag}`;
+
     return transporter.sendMail({
-      from: '"TechDaily" <' + process.env.EMAIL_SENDER + '>',
+      from: '"TechDaily" <' + (process.env.EMAIL_SENDER || process.env.EMAIL_USER) + '>',
       to: recipientEmail,
-      subject: emailTemplate.subject,
+      subject: subjectText,
       text: textContent,
       html: personalizedHtml,
     });
