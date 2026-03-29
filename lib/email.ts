@@ -68,6 +68,13 @@ export default async function sendEmail({ slug, to, bcc, replacements = {} }: Se
             .footer-links a { color: #f4f4f5; text-decoration: none; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding-right: 24px; display: inline-block; }
             .unsubscribe { margin: 0; font-size: 13px; color: #71717a; line-height: 1.6; }
             .unsubscribe a { color: #a1a1aa; text-decoration: underline; text-underline-offset: 2px; }
+            @media only screen and (max-width: 620px) {
+              .column { display: block !important; width: 100% !important; padding-right: 0 !important; }
+              .mobile-img-container { height: 240px !important; margin-bottom: 24px !important; }
+              .mobile-auto-height { height: auto !important; }
+              .mobile-padding-bottom { padding-bottom: 8px !important; }
+              .mobile-text-center { text-align: center !important; }
+            }
           </style>
         </head>
         <body>
