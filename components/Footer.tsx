@@ -81,7 +81,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <Typography variant="caption" className="normal-case font-medium">
-            © 2026 Tech Daily Media. By DevRGD
+            TechDaily 💌 Architected by DevRGD
           </Typography>
           <div className="flex flex-wrap justify-center gap-8 items-center text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
             <Link href="/privacy" className="hover:text-primary transition-colors">
