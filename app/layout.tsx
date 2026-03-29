@@ -27,13 +27,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://techdaily.com',
+    url: 'https://techdaily-devrgd.vercel.app',
     siteName: 'TechDaily',
     title: 'TechDaily | Premium Technology News',
     description: 'Reporting for the digital age. Authority on AI, policy, and innovation.',
     images: [
       {
-        url: 'https://techdaily.com/og-image.png',
+        url: 'https://techdaily-devrgd.vercel.app/og-image.png',
         width: 1200,
         height: 630,
         alt: 'TechDaily',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'TechDaily | Premium Technology News',
     description: 'Reporting for the digital age. Authority on AI, policy, and innovation.',
-    images: ['https://techdaily.com/og-image.png'],
+    images: ['https://techdaily-devrgd.vercel.app/og-image.png'],
     creator: '@techdaily',
   },
   icons: {
