@@ -70,6 +70,9 @@ export default async function sendEmail({ slug, to, bcc, replacements = {} }: Se
           </style>
         </head>
         <body>
+          <div style="display: none; height: 0; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #09090b;">
+            ${Date.now()}_${Math.random().toString(36).substring(7)}
+          </div>
           <center class="wrapper">
             <div class="container">
               <div class="header">
@@ -115,9 +118,6 @@ export default async function sendEmail({ slug, to, bcc, replacements = {} }: Se
               </div>
             </div>
           </center>
-          <div style="display: none; white-space: nowrap; font-size: 1px; color: #09090b; line-height: 0;">
-            ${Date.now()}_${Math.random().toString(36).substring(7)}
-          </div>
         </body>
       </html>
     `;
