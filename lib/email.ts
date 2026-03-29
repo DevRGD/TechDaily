@@ -129,7 +129,7 @@ export default async function sendEmail({ slug, to, bcc, replacements = {} }: Se
 
     const textContent = personalizedHtml.replace(/<[^>]*>?/gm, '');
 
-    const subjectTag = `[#${Math.random().toString(36).substring(7).toUpperCase()}]`;
+    const subjectTag = `[${new Date().toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true })}]`;
     const subjectText = emailTemplate.subject.includes('{{date}}')
       ? emailTemplate.subject.replace('{{date}}', replacements.date || '')
       : `${emailTemplate.subject}${replacements.date ? ` — ${replacements.date}` : ''} ${subjectTag}`;
