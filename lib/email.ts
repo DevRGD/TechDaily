@@ -125,13 +125,13 @@ export default async function sendEmail({ slug, to, bcc, replacements = {} }: Se
                 <p class="unsubscribe">
                   You are receiving this one-time notification as a confirmation of your recent account changes.<br>
                   Changed your mind? <a href="${baseUrl}/newsletter?type=Daily&email=${encodeURIComponent(recipientEmail)}&${uniqueTag}">Rejoin the network</a> at any time.<br>
-                  TechDaily 💌 Architected by DevRGD
+                  AI Summarized News ⚡ by DevRGD
                 </p>`
                     : `
                 <p class="unsubscribe">
                   You are receiving this premium briefing because you subscribed to TechDaily.<br>
                   Changed your mind? <a href="${baseUrl}/newsletter?type=Unsubscribe&email=${encodeURIComponent(recipientEmail)}&${uniqueTag}">Unsubscribe</a>.<br>
-                  TechDaily 💌 Architected by DevRGD
+                  AI Summarized News ⚡ by DevRGD
                 </p>`
                 }
               </div>

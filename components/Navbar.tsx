@@ -10,6 +10,7 @@ import SearchInput from './SearchInput';
 import ThemeToggle from './ThemeToggle';
 import NewsletterForm from './NewsletterForm';
 import { cn } from '@/lib/utils';
+import Logo from './Logo';
 
 const NAV_LINKS = [
   { label: 'Articles', href: '/articles' },
@@ -75,12 +76,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
       <div className="container mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-            <div className="size-8 border-4 border-primary rounded-[6px] shrink-0 shadow-sm shadow-primary/20" />
-            <Typography variant="h4" as="h2" className="text-[44px] uppercase tracking-tighter leading-none pt-1">
-              TechDaily
-            </Typography>
-          </Link>
+          <Logo className="justify-center mx-auto lg:mx-0" />
 
           <nav className="hidden lg:flex items-center justify-center flex-1 gap-8">
             {NAV_LINKS.map((link) => (
