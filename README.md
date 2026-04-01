@@ -1,6 +1,7 @@
-# TechDaily: Automated Tech News Platform [Give it a star and I'll send you the n8n workflow]
+# TechDaily: Automated Tech News Platform
+> ### 🌟 **Want the n8n Workflow?**
+> If you find this project useful, please star the repository and I'll grant the access to my private repository where you'll find the n8n workflow for free!
 
-### Give the repo a star
 
 TechDaily is an autonomous system designed to handle the full lifecycle of technology news, from initial collection to final delivery. The platform removes the need for manual editorial work by combining automated data fetching, AI-driven content analysis, and scheduled distribution through newsletters.
 
@@ -31,7 +32,7 @@ graph LR
 The system monitors [TechCrunch](https://techcrunch.com) for new technical stories. When new content is identified, it is processed by the Groq AI engine using the llama-3.1-8b-instant model. The AI extracts the core facts and generates metadata, including categories and SEO-friendly summaries. This structured data is then stored in MongoDB for retrieval by the web interface.
 
 ### Newsletter Distribution
-Audience engagement is handled through automated newsletters managed via cron schedules in n8n. Articles are selected based on relevance and performance, then sent to subscribers on the following refined schedules:
+Audience engagement is handled through automated newsletters with schedules managed by **Supabase cron jobs** triggering n8n workflows. Articles are selected based on relevance and performance, then sent to subscribers on the following refined schedules:
 - **Daily**: 10 articles sent every morning.
 - **Weekly**: 15 articles sent every 7 days.
 - **Monthly**: 20 articles sent every 30 days.
@@ -41,7 +42,7 @@ Audience engagement is handled through automated newsletters managed via cron sc
 - **Frontend**: Next.js 16 utilizing the App Router and Server Components.
 - **Styling**: Tailwind CSS 4 for a modern and responsive user interface.
 - **Database**: MongoDB for persistent storage of articles and subscriber information.
-- **Automation**: n8n for server-side workflow orchestration and scheduling.
+- **Automation & Scheduling**: n8n for workflow orchestration and **Supabase** for robust cron job management.
 - **AI Engine**: Groq utilizing the llama-3.1-8b-instant model for high-speed content processing.
 - **Email Delivery**: NodeMailer for sending automated newsletters.
 
@@ -63,7 +64,7 @@ Audience engagement is handled through automated newsletters managed via cron sc
 
 2. **Install dependencies**:
    ```bash
-   npm install
+   bun install
    ```
 
 3. **Configure Environment Variables**:
@@ -87,7 +88,7 @@ Audience engagement is handled through automated newsletters managed via cron sc
 
 4. **Run the application**:
    ```bash
-   npm run dev
+   bun run dev
    ```
 
 ## Newsletter Subscription
