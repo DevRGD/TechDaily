@@ -74,6 +74,13 @@ export default async function sendEmail({ slug, to, bcc, replacements = {} }: Se
               .mobile-auto-height { height: auto !important; }
               .mobile-padding-bottom { padding-bottom: 8px !important; }
               .mobile-text-center { text-align: center !important; }
+              .resp-title { font-size: 20px !important; }
+              .resp-excerpt { font-size: 14px !important; }
+              .resp-meta { font-size: 9px !important; }
+              .resp-via { font-size: 8px !important; }
+              .resp-header-title { font-size: 32px !important; }
+              .resp-header-desc { font-size: 15px !important; }
+              .resp-header-pre { font-size: 11px !important; }
             }
           </style>
         </head>
