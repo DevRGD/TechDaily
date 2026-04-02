@@ -26,7 +26,7 @@ export default function ContactPage() {
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
                     <span className="material-symbols-outlined text-muted-foreground">mail</span>
-                    <Typography variant="body">editorial@techdaily.com</Typography>
+                    <Typography variant="body">editorial@techdaily-devrgd.vercel.app</Typography>
                   </div>
                   <div className="flex items-center gap-4">
                     <span className="material-symbols-outlined text-muted-foreground">call</span>

@@ -26,19 +26,27 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { article } = data;
 
   return {
+    metadataBase: new URL('https://techdaily-devrgd.vercel.app'),
     title: article.title,
     description: article.excerpt,
-    alternates: { canonical: `https://techdaily.com/articles/${article.slug}` },
+    alternates: { canonical: `/articles/${article.slug}` },
     openGraph: {
       title: article.title,
       description: article.excerpt,
       type: 'article',
-      url: `https://techdaily.com/articles/${article.slug}`,
+      url: `/articles/${article.slug}`,
       siteName: 'TechDaily',
-      images: [{ url: article.image, width: 1200, height: 630, alt: article.title }],
+      images: [
+        {
+          url: article.image,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        },
+      ],
       publishedTime: article.createdAt,
       authors: [article.author.name],
-      tags: article.tags.map((t: { name: string }) => t.name),
+      tags: article.tags?.map((t: { name: string }) => t.name) || [],
     },
     twitter: {
       card: 'summary_large_image',

@@ -24,6 +24,7 @@ export const metadata: Metadata = {
   description: 'Reporting for the digital age. Authority on AI, policy, and innovation.',
   keywords: ['tech news', 'AI', 'innovation', 'policy', 'startups'],
   authors: [{ name: 'DevRGD' }],
+  metadataBase: new URL('https://techdaily-devrgd.vercel.app'),
   openGraph: {
     type: 'website',
     locale: 'en_IN',
