@@ -30,7 +30,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   return new ImageResponse(
     <div
       style={{
-        background: '#09090b',
+        background: 'linear-gradient(to bottom right, #1e293b, #101822)',
         width: '100%',
         height: '100%',
         display: 'flex',
@@ -41,14 +41,24 @@ export default async function Image({ params }: { params: Promise<{ slug: string
         fontFamily: 'sans-serif',
       }}
     >
+      <div 
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\'%3E%3Ccircle cx=\'2\' cy=\'2\' r=\'1.5\' fill=\'rgba(255, 255, 255, 0.07)\'/%3E%3C/svg%3E")',
+        }}
+      />
       <div style={{ display: 'flex', alignItems: 'center', gap: '24px', marginBottom: '40px' }}>
         <div
           style={{
             width: '48px',
             height: '48px',
-            border: '6px solid #e11d48',
+            border: '6px solid #0f58bd',
             borderRadius: '8px',
-            boxShadow: '0 4px 20px rgba(225, 29, 72, 0.4)',
+            boxShadow: '0 4px 20px rgba(15, 88, 189, 0.4)',
           }}
         />
         <h2
@@ -70,7 +80,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
         style={{
           fontSize: '84px',
           fontWeight: 700,
-          color: '#f4f4f5',
+          color: '#f6f7f8',
           lineHeight: 1.1,
           marginBottom: '32px',
           letterSpacing: '-2px',
@@ -83,7 +93,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
         style={{
           fontSize: '36px',
           fontWeight: 400,
-          color: '#a1a1aa',
+          color: '#94a3b8',
           lineHeight: 1.4,
           maxWidth: '900px',
           margin: 0,
@@ -97,7 +107,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           style={{
             fontSize: '24px',
             fontWeight: 700,
-            color: '#e11d48',
+            color: '#0f58bd',
             textTransform: 'uppercase',
             letterSpacing: '4px',
             margin: 0,
