@@ -17,20 +17,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: `Latest reports and authority on ${title} innovation and policy.`,
       url: `https://techdaily-devrgd.vercel.app/categories/${slug}`,
       type: 'website',
-      images: [
-        {
-          url: 'https://techdaily-devrgd.vercel.app/og-image.png',
-          width: 1200,
-          height: 630,
-          alt: 'TechDaily',
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${title} | TechDaily`,
       description: `Latest reports and authority on ${title} innovation and policy.`,
-      images: ['https://techdaily-devrgd.vercel.app/og-image.png'],
     },
   };
 }

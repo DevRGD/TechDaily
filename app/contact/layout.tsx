@@ -9,20 +9,11 @@ export const metadata: Metadata = {
     description: 'Connect with the digital authority on AI, policy, and innovation.',
     url: 'https://techdaily-devrgd.vercel.app/contact',
     type: 'website',
-    images: [
-      {
-        url: 'https://techdaily-devrgd.vercel.app/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'TechDaily',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Contact | TechDaily',
     description: 'Connect with the digital authority on AI, policy, and innovation.',
-    images: ['https://techdaily-devrgd.vercel.app/og-image.png'],
   },
 };
 

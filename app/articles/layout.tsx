@@ -9,20 +9,11 @@ export const metadata: Metadata = {
     description: 'Real time authority on AI, innovation, and digital policy.',
     url: 'https://techdaily-devrgd.vercel.app/articles',
     type: 'website',
-    images: [
-      {
-        url: 'https://techdaily-devrgd.vercel.app/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'TechDaily',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Live Technical Feed | TechDaily',
     description: 'Real time authority on AI, innovation, and digital policy.',
-    images: ['https://techdaily-devrgd.vercel.app/og-image.png'],
   },
 };
 
