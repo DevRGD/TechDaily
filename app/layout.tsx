@@ -4,6 +4,7 @@ import './globals.css';
 import ThemeProvider from '@/components/providers/ThemeProvider';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
+import { Analytics } from '@vercel/analytics/next';
 
 const sans = Plus_Jakarta_Sans({
   variable: '--font-sans',
@@ -62,6 +63,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
